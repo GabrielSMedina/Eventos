@@ -17,3 +17,5 @@ app.include_router(evento_router)
 app.include_router(ingresso_router)
 
 Base.metadata.create_all(bind=engine)
+
+

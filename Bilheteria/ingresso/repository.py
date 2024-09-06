@@ -43,7 +43,7 @@ def comprar_ingresso(db: Session, id_evento: int):
 def listar_ingressos_comprados(db: Session):
     try:
         _ingresso = db.query(Ingresso).all()
-        if _ingresso is not None:
+        if len(_ingresso) >= 1:
             return {'Ingresso': _ingresso}
         else:
             return {'Ingresso': 'Nenhum ingresso encontrado'}
