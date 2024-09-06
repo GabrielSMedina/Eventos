@@ -98,13 +98,8 @@ def devolver_ingresso_por_num_pedido(db: Session, num_pedido: str):
 
 
 def _gerar_numero_pedido():
-    # Gera dois números aleatórios
-    _numero = ''.join(random.choices(string.digits, k=2))
-
-    # Gera dois caracteres aleatórios]
-    _caracteres = ''.join(random.choices(string.ascii_uppercase, k=2))
-
-    # Concatena os números e os caracteres
+    _numero = ''.join(random.choices(string.digits, k=3))
+    _caracteres = ''.join(random.choices(string.ascii_uppercase, k=3))
     _codigo = _numero + _caracteres
 
     return _codigo

@@ -14,8 +14,6 @@ def get_db():
 
 
 def criar_evento(db: Session, evento: EventoSchema):
-    if _existe_evento():
-        return {'Evento': 'Evento já existe!'}
     _evento = Evento(
                      titulo=evento.titulo,
                      descricao=evento.descricao,
@@ -40,7 +38,7 @@ def listar_todos_eventos(db: Session):
     try:
         _evento = db.query(Evento).all()
 
-        if _evento is not None:
+        if len(_evento) >= 1:
             return {'Eventos': _evento}
         else:
             return {'Eventos': 'Nenhum evento encontrado'}
@@ -90,7 +88,3 @@ def deletar_evento(db: Session, id_evento: int):
     except Exception as e:
         db.rollback()
         return {'Eventos': f'Erro durante a exclusão do evento! \n {e}'}
-
-
-def _existe_evento():
-    pass
